@@ -161,6 +161,8 @@ NSString *const SUUpdaterAppcastNotificationKey = @"SUUpdaterAppCastNotification
 
 - (BOOL)startUpdater:(NSError * __autoreleasing *)error
 {
+    NSLog(@"Sparkle test log");
+    
     if (self.startedUpdater) {
         return YES;
     }
