@@ -63,6 +63,7 @@
 
 - (instancetype)initWithStartingUpdater:(BOOL)startUpdater updaterDelegate:(nullable id<SPUUpdaterDelegate>)theUpdaterDelegate userDriverDelegate:(nullable id<SPUStandardUserDriverDelegate>)theUserDriverDelegate
 {
+    NSLog(@"test log");
     if ((self = [super init])) {
         self->updaterDelegate = theUpdaterDelegate;
         self->userDriverDelegate = theUserDriverDelegate;
@@ -78,6 +79,8 @@
 
 - (void)startUpdater
 {
+        NSLog(@"test startUpdater");
+
     NSError *updaterError = nil;
     if (![self.updater startUpdater:&updaterError]) {
         SULog(SULogLevelError, @"Fatal updater error (%ld): %@", updaterError.code, updaterError.localizedDescription);
