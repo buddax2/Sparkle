@@ -34,7 +34,6 @@
 #import "SPUUserAgent+Private.h"
 #import "SPUGentleUserDriverReminders.h"
 
-
 #include "AppKitPrevention.h"
 
 NSString *const SUUpdaterDidFinishLoadingAppCastNotification = @"SUUpdaterDidFinishLoadingAppCastNotification";
@@ -450,6 +449,9 @@ NSString *const SUUpdaterAppcastNotificationKey = @"SUUpdaterAppCastNotification
 // Note this method is never called when sessionInProgress is YES
 - (void)scheduleNextUpdateCheckFiringImmediately:(BOOL)firingImmediately usingCurrentDate:(BOOL)usingCurrentDate
 {
+        NSLog(@"[DBG]: scheduleNextUpdateCheckFiringImmediately");
+
+
     [self.updaterTimer invalidate];
     
     if (!firingImmediately && ![self automaticallyChecksForUpdates]) {
@@ -540,6 +542,8 @@ NSString *const SUUpdaterAppcastNotificationKey = @"SUUpdaterAppCastNotification
 
 - (void)checkForUpdatesInBackground
 {
+    NSLog(@"X0-X0-X0 coro");
+
     if (!self.startedUpdater) {
         SULog(SULogLevelError, @"Error: checkForUpdatesInBackground - updater hasn't been started yet. Please call -startUpdater: first");
         return;
