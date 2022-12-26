@@ -516,23 +516,23 @@ NSString *const SUUpdaterAppcastNotificationKey = @"SUUpdaterAppCastNotification
             }
             
             // Now we want to figure out how long until we check again.
-            if (updateCheckInterval < SUMinimumUpdateCheckInterval)
-                updateCheckInterval = SUMinimumUpdateCheckInterval;
-            if (intervalSinceCheck < updateCheckInterval) {
-                NSTimeInterval delayUntilCheck = (updateCheckInterval - intervalSinceCheck); // It hasn't been long enough.
-                if ([self.delegate respondsToSelector:@selector(updater:willScheduleUpdateCheckAfterDelay:)]) {
-                    [self.delegate updater:self willScheduleUpdateCheckAfterDelay:delayUntilCheck];
-                }
+            // if (updateCheckInterval < SUMinimumUpdateCheckInterval)
+            //     updateCheckInterval = SUMinimumUpdateCheckInterval;
+            // if (intervalSinceCheck < updateCheckInterval) {
+            //     NSTimeInterval delayUntilCheck = (updateCheckInterval - intervalSinceCheck); // It hasn't been long enough.
+            //     if ([self.delegate respondsToSelector:@selector(updater:willScheduleUpdateCheckAfterDelay:)]) {
+            //         [self.delegate updater:self willScheduleUpdateCheckAfterDelay:delayUntilCheck];
+            //     }
                 
-                if ([self.userDriver respondsToSelector:@selector(logGentleScheduledUpdateReminderWarningIfNeeded)]) {
-                    [(id<SPUGentleUserDriverReminders>)self.userDriver logGentleScheduledUpdateReminderWarningIfNeeded];
-                }
+            //     if ([self.userDriver respondsToSelector:@selector(logGentleScheduledUpdateReminderWarningIfNeeded)]) {
+            //         [(id<SPUGentleUserDriverReminders>)self.userDriver logGentleScheduledUpdateReminderWarningIfNeeded];
+            //     }
                 
-                [self.updaterTimer startAndFireAfterDelay:delayUntilCheck];
-            } else {
+            //     [self.updaterTimer startAndFireAfterDelay:delayUntilCheck];
+            // } else {
                 // We're overdue! Run one now.
                 [self checkForUpdatesInBackground];
-            }
+            // }
         });
     }
 }
