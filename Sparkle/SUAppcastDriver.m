@@ -445,6 +445,7 @@ SPU_OBJC_DIRECT
 
 - (BOOL)isItemNewer:(SUAppcastItem *)ui SPU_OBJC_DIRECT
 {
+    SULog(SULogLevelError, @"Comparing version %@ with %@", _host.version, ui.versionString);
     return ui != nil && [[self versionComparator] compareVersion:_host.version toVersion:ui.versionString] == NSOrderedAscending;
 }
 
